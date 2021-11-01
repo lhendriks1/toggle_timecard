@@ -16,10 +16,10 @@ def _createEntry(date):
         "time_entry":
             {
                 "start": date, # time entry start time (string, required, ISO 8601 date and time)
-                "duration": 28800,  # time entry duration in seconds
-                "pid": 175174979,  # project ID (integer, not required)
-                "wid": 945833,  # workspace ID (integer, required if pid or tid not supplied)
-                "billable": True, # (boolean, not required, default false, available for pro workspaces)
+                "duration": 28800,  # 8 hours, time entry duration in seconds
+                "pid": 123456789,  # project ID (integer, not required)
+                "wid": 123456,  # workspace ID (integer, required if pid or tid not supplied)
+                "billable": False, # (boolean, not required, default false, available for pro workspaces)
                 "created_with": "python script",
                 #  "tags": '', (array of strings, not required)
                 #  "description: '' string, not required
@@ -35,7 +35,7 @@ def _getMonthDates():
     dates = []
     for single_date in _daterange(firstDay, lastDay + timedelta(days=1)):
         if single_date.isoweekday() in range(1, 6):
-            dates.append(single_date.strftime("%Y-%m-%dT09:00:00-04:00"))
+            dates.append(single_date.strftime("%Y-%m-%dT09:00:00-04:00")) # start 9am EST
 
     return dates
 
